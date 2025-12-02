@@ -1,15 +1,3 @@
-﻿/data/
-/log/
-/SRAFrontend/bin/
-/SRAFrontend/obj/
-/SRAFrontend/SRAFrontend.sln.DotSettings.user
-/.venv/
-/.vscode/
-/setup/output/
-/setup/SRA/
-/setup/install_info.txt
-**/__pycache__/
-**/.vs/
 # Logs
 logs
 *.log
@@ -29,6 +17,10 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 *.sw?
 
 # sra-cli
