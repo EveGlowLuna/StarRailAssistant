@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
+using Markdown.Avalonia;
 using Microsoft.Extensions.Logging;
 using SRAFrontend.Controls;
 using SRAFrontend.Data;
@@ -115,17 +116,15 @@ public class CommonModel(
             var manualUpgradeButton =
                 SukiMessageBoxButtonsFactory.CreateButton("手动更新", SukiMessageBoxResult.OK, "Flat Accent");
             var cancelButton = SukiMessageBoxButtonsFactory.CreateButton("忽略", SukiMessageBoxResult.Cancel);
-            var markdownViewer = new ThemedMarkdownScrollViewer
-            {
-                Markdown = response.Data.ReleaseNote,
-                Width = 600,
-                Height = 400
-            };
-            
             var result = await SukiMessageBox.ShowDialog(new SukiMessageBoxHost
             {
                 Header = "Update Available - " + response.Data.VersionName,
-                Content = markdownViewer,
+                Content = new MarkdownScrollViewer
+                {
+                    Markdown = response.Data.ReleaseNote,
+                    Width = 600,
+                    Height = 400
+                },
                 ActionButtonsSource = [autoUpgradeButton, manualUpgradeButton, cancelButton]
             });
             switch (result)
